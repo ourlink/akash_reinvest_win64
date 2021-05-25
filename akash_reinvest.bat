@@ -1,8 +1,8 @@
 @echo off
 SETLOCAL
 :: ####  processing variables that can be changed
-set akash_validator=akashvaloper1x0sdgtmvdl8d6mp85sqlsh63l07jkg3fz5uaz6
-set key_address=akash1yqgj0fce4pyax2yhtl2cwl8arv9tlgt77dw3xv
+set akash_validator=akashvaloper...
+set key_address=akash...
 set key_name=my_demo
 set /A reserve_amt=5000000
 set /A threshold_amt=2000000
@@ -64,7 +64,7 @@ EXIT /B 0
 
 :withdraw_rewards
 ::{
-::  set withdraw_hash=`akash.exe tx distribution withdraw-rewards %akash_validator% --fees 5000uakt --from %key_name% --keyring-backend test --node %rpc_node% --chain-id %akash_chain_id%  --yes | jq-win64 -r '.txhash'`
+  ::# withdraw the given amount
   for /f %%i in ('akash.exe tx distribution withdraw-rewards %akash_validator% --fees 5000uakt --from %key_name% --keyring-backend test --keyring-dir .\keys --node %rpc_node% --chain-id %akash_chain_id%  --yes ^| jq-win64 -r ".txhash"') do set withdraw_hash=%%i
   timeout %delay_secs% > NUL
   set "%~1 = %withdraw_hash%"
@@ -74,16 +74,15 @@ EXIT /B 0
 :wallet_balance
 ::{
   ::# get the akash value we have in the wallet
-::  akash_value=`/root/bin/akash query bank balances akash1yqgj0fce4pyax2yhtl2cwl8arv9tlgt77dw3xv --node http://135.181.60.250:26657 -o json | jq-win64 -r '.balances[0].amount'`
   for /f %%i in ('akash.exe query bank balances %key_address% --node %rpc_node% -o json ^| jq-win64 -r ".balances[0].amount"') do set akash_value=%%i
-  timeout %delay_secs% > NUL
+  timeout %delay_secs%-10 > NUL
   set "%~1 = %akash_value%"
   EXIT /B 0
 ::}
 
 :delegate_net
 ::{
-  ::set delegation_json=`/root/bin/akash tx staking delegate %akash_validator% $akash_amt --from %key_name% --fees 5000uakt --chain-id $akash_chain_id --keyring-di .\keys --keyring-backend test --node %rpc_node --yes`
+  ::# delegate the given amount
   for /f %%i in ('akash.exe tx staking delegate %akash_validator% %akash_amt% --from %key_name% --fees 5000uakt --chain-id %akash_chain_id% --keyring-dir .\keys --keyring-backend test --node %rpc_node% --yes ^| jq-win64 -r ".txhash"') do set delegation_hash=%%i
   timeout %delay_secs% > NUL
   set "%~1 = %delegation_hash%"
