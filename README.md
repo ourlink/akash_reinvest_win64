@@ -12,16 +12,23 @@ Using the **Windows Task Scheduler** this batch file can be used to enable the a
 ## Configuration Steps ##
 To configure your machine for executing this batch script you need to complete each of the steps below;
 
+### Install JQ for Windows ###
+**What is jq** - jq is like `sed` for JSON data - you can use it to slice and filter and map and transform structured data with the same ease that sed, awk, grep and friends let you play with text.
+
+**Step 1** - Visit the jq download page - [https://stedolan.github.io/jq/download/](https://stedolan.github.io/jq/download/) and download the latest version of jq-win64.exe for windows.
+
+**Step 2** - Place the downloaded `jq-win64.exe` file into a directory that is contained within your local environment's path statement. 
+
 ### Akash Installation ###
 This will install the Akash binaries onto your local Windows machine;
 
-**Step 1** - Visit the Akash GitHub site ( [https://github.com/ovrclk/akash/releases/latest](https://github.com/ovrclk/akash/releases/latest) ) and download the latest version of the Akash software for Windows. At the present time the latest version is v0.12.1 and the direct link to the Windows Version is here - [https://github.com/ovrclk/akash/releases/download/v0.12.1/akash_0.12.1_windows_amd64.zip](https://github.com/ovrclk/akash/releases/download/v0.12.1/akash_0.12.1_windows_amd64.zip)
+**Step 3** - Visit the Akash GitHub site ( [https://github.com/ovrclk/akash/releases/latest](https://github.com/ovrclk/akash/releases/latest) ) and download the latest version of the Akash software for Windows. At the present time the latest version is v0.12.1 and the direct link to the Windows Version is here - [https://github.com/ovrclk/akash/releases/download/v0.12.1/akash_0.12.1_windows_amd64.zip](https://github.com/ovrclk/akash/releases/download/v0.12.1/akash_0.12.1_windows_amd64.zip)
 
-**Step 2** - Unzip the downloaded file and place the unzipped (**akash.exe**) into a directory in your `Documents` folder. We suggest you use the following location -  `\Documents\Akash` as the location. However, you can use whatever location you want, just be certain to reference your installation directory accordingly. 
+**Step 4** - Unzip the downloaded file and place the unzipped (**akash.exe**) into a directory in your `Documents` folder. We suggest you use the following location -  `\Documents\Akash` as the location. However, you can use whatever location you want, just be certain to reference your installation directory accordingly. 
 
 All of our examples will refer to this "*Installation Folder*" as this location - `\Documents\Akash`
 
-**Step 3** - Open a Command Window in your installation folder as defined in below;
+**Step 5** - Open a Command Window in your installation folder as defined in below;
 
 ![](https://i.imgur.com/rMi4bNh.png)
 
@@ -46,7 +53,7 @@ Now that you have Akash installed and operational. The following steps will walk
 
 You can use wallets created using Keplr or wallets created using Cosmostation Mobile App. However, only wallets created with a 24 word mnemonic are compatible. 
 
-**Step 4** - Import your wallet using your 24 word mnemonic. The command to use is, shown below (replace **[wallet_name]** with a name you want for your wallet);
+**Step 6** - Import your wallet using your 24 word mnemonic. The command to use is, shown below (replace **[wallet_name]** with a name you want for your wallet);
 
     akash keys add [wallet_name] --recover --keyring-dir .\keys --keyring-backend test
 
@@ -56,8 +63,8 @@ You will be prompted for your 24 word mnemonic. Once entered, your wallet will b
 
 *Your results will not match the results shown* - The **name** you chose for your wallet will be displayed along with your wallet's specific **address** and **pubkey**.
 
-### AKASH_REINVEST Configuration ###
+### Batch File (akash_reinvest.bat) Configuration ###
 
 The batch file needs to be downloaded and configured before you can execute it with your installation. Follow these steps to complete the setup;
 
-**Step 5** - download the **akash_reinvest.bat** file from github here -
+**Step 7** - download the **akash_reinvest.bat** file from github here -
