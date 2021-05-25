@@ -6,10 +6,26 @@ This is a batch file that is designed to work with the **Akash Network** and a l
 
 Using the **Windows Task Scheduler** this batch file can be used to enable the automated withdrawal of Staked Rewards and Reinvestment of these Rewards with an operating Validator on the Akash Network.
 
-## --DISCLAIMER -- ##
-***WARNING** - This is a batch script which requires access to your Akash Wallet. Your Akash Wallet will reside on the local machine using the *`--keyring-backend test`* *setting. This setting opens up your wallet to anyone with access to your local machine. By using this batch script you acknowledge that you take full responsibility for the security of your Akash Wallet and this scripts execution.** 
+## Usage ##
+*Ensure all of the **configuration steps** have been completed before attempting to run the batch script.*
 
+To run the script just open a Command Window and run the batch File. 
 
+    akash_reinvest.bat
+
+Your output should look similar to the following;
+
+![](https://i.imgur.com/0QnXSYv.png)
+
+If you do not have a sufficient balance for the re-staking to occur this will be the results the script will produce;
+
+![](https://i.imgur.com/lDi6mGu.png)
+
+A few quick notes;
+
+1. The script always generates re-staking amount in whole integers
+2. The script can take up to 45 seconds to execute due to timeout delays
+3. You can run the script as frequently as you want, just be aware that you get charged 2 sets of fees each time the script executes - One fee to **Withdraw** your rewards, and another fee to **Delegate/Restake** your rewards.
 
 ## Configuration Steps ##
 To configure your machine for executing this batch script you need to complete each of the steps below;
@@ -99,13 +115,8 @@ In this step we are going to update the following options so that they contain y
 
 - threshold_amt=2000000 (atomic representation of AKT)
 
-## Usage ##
-Ensure all of the configuration steps above have been completed. To run the script just open a Command Window and run the batch File.
-Your output should look similar to the following;
-
-
-
-
+## --DISCLAIMER -- ##
+***WARNING** - This is a batch script which requires access to your Akash Wallet. Your Akash Wallet will reside on the local machine using the *`--keyring-backend test`* *setting. This setting opens up your wallet to anyone with access to your local machine. By using this batch script you acknowledge that you take full responsibility for the security of your Akash Wallet and this scripts execution.** 
 
 ## License ##
 Released under the GNU General Public License v3
