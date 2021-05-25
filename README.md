@@ -6,8 +6,10 @@ This is a batch file that is designed to work with the **Akash Network** and a l
 
 Using the **Windows Task Scheduler** this batch file can be used to enable the automated withdrawal of Staked Rewards and Reinvestment of these Rewards with an operating Validator on the Akash Network.
 
-
+## --DISCLAIMER -- ##
 ***WARNING** - This is a batch script which requires access to your Akash Wallet. Your Akash Wallet will reside on the local machine using the *`--keyring-backend test`* *setting. This setting opens up your wallet to anyone with access to your local machine. By using this batch script you acknowledge that you take full responsibility for the security of your Akash Wallet and this scripts execution.** 
+
+
 
 ## Configuration Steps ##
 To configure your machine for executing this batch script you need to complete each of the steps below;
@@ -18,6 +20,8 @@ To configure your machine for executing this batch script you need to complete e
 **Step 1** - Visit the jq download page - [https://stedolan.github.io/jq/download/](https://stedolan.github.io/jq/download/) and download the latest version of jq-win64.exe for windows.
 
 **Step 2** - Place the downloaded `jq-win64.exe` file into a directory that is contained within your local environment's path statement. 
+
+
 
 ### Akash Installation ###
 This will install the Akash binaries onto your local Windows machine;
@@ -67,4 +71,43 @@ You will be prompted for your 24 word mnemonic. Once entered, your wallet will b
 
 The batch file needs to be downloaded and configured before you can execute it with your installation. Follow these steps to complete the setup;
 
-**Step 7** - download the **akash_reinvest.bat** file from github here -
+**Step 7** - download the **akash_reinvest.bat** file from github here - [https://github.com/ourlink/akash_reinvest_win64/blob/master/akash_reinvest.bat](https://github.com/ourlink/akash_reinvest_win64/blob/master/akash_reinvest.bat) and save the downloaded file to the same location on you machine as the **akash.exe** .
+
+**Step 8** - Using your favorite text editor (notepad, notepad++, etc...) edit the `akash_reinvest.bat` file
+
+![](https://i.imgur.com/uBihsYQ.png)
+
+In this step we are going to update the following options so that they contain your desired settings;
+
+**AKASH_VALIDATOR** - this is the address of your validator for staking purposes. The address starts with `akashvaloper...`
+
+- akash_validator=[paste in the validator address you want to re-stake your Akash to]
+
+**KEY_ADDRESS** - this is the ADDRESS for your wallet. This is the address that was displayed to you in Step 6 above after importing your wallet.
+
+- key_address=[paste in your wallet address]
+
+**KEY_NAME** - This is the NAME that you called your wallet during the import in Step 6 above.
+
+- key_name=[name of your key without quotes]
+
+**RESERVE_AMT** - This is the amount of Akash (AKT) to leave in your wallet and not use for reinvesting. The amount is listed in atomic units (in our example, we have 5 AKT kept in reserve). We recommend to not set this amount too low! You must keep some Akash for payment of transaction fees.
+
+- reserve_amt=5000000   (atomic representation of AKT)
+
+**THRESHOLD_AMT** - This is the lowest amount of Akash (AKT) that will ever be Re-Staked. In other words, you can adjust this amount to save on transaction fees and set a minimum amount of Akash for re-staking. The amount is listed in atomic units (in our example, we have 2 AKT as the minimum).
+
+- threshold_amt=2000000 (atomic representation of AKT)
+
+## Usage ##
+Ensure all of the configuration steps above have been completed. To run the script just open a Command Window and run the batch File.
+Your output should look similar to the following;
+
+
+
+
+
+## License ##
+Released under the GNU General Public License v3
+
+[http://www.gnu.org/licenses/gpl-3.0.html](http://www.gnu.org/licenses/gpl-3.0.html)
